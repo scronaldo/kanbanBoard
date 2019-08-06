@@ -1,6 +1,6 @@
-// Component to render text EDITING form
+// Component to render text EDITING form in cards
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Icon from "@material-ui/core/Icon";
 import Textarea from "react-textarea-autosize";
 import Card from "@material-ui/core/Card";
@@ -30,10 +30,28 @@ const ButtonContainer = styled.div`
   margin-left: 8px;
 `;
 
+
+
+const pulse = keyframes`
+from {
+  transform:rotate(0deg);
+}
+to {
+  transform:rotate(360deg);
+}`;
+
+
 const StyledIcon = styled(Icon)`
   margin-left: 8px;
   cursor: pointer;
+  &:hover {
+    animation-name: ${pulse};
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+  }
 `;
+
 
 const KanbanForm = React.memo(
   ({ list, text = "", onChange, closeForm, children }) => {

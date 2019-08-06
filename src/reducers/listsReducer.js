@@ -47,6 +47,7 @@ const initialState = [
 const listsReducer = (state=initialState, action) => {
     switch(action.type) {
 
+        
         case CONSTANTS.ADD_LIST: 
         const newList = {
             title: action.payload,
@@ -60,14 +61,12 @@ const listsReducer = (state=initialState, action) => {
             newList
         ];
 
+
+
+
+
         case CONSTANTS.ADD_CARD: 
-                //sound
-            const PlaySound = () => {
-                    const audio = new Audio('https://freesound.org/data/previews/263/263132_2064400-lq.mp3');
-                    audio.loop = false;
-                    audio.play(); 
-                }
-            PlaySound(); 
+          
 
             // adding braces to fix newState var duplicatiton
             {const newCard = {
@@ -76,7 +75,6 @@ const listsReducer = (state=initialState, action) => {
             }
 
             cardID += 1;
-            console.log(action);
             const newState = state.map(list => {
                 if(list.id === action.payload.listID) {
                     return  {
@@ -90,6 +88,9 @@ const listsReducer = (state=initialState, action) => {
             })
 
             return newState;};
+
+
+
 
 
             case CONSTANTS.EDIT_CARD: {
@@ -109,15 +110,11 @@ const listsReducer = (state=initialState, action) => {
                 });
               };
           
+
+
+
               case CONSTANTS.DELETE_CARD: {
-                // TODO: extract NON_SAVING logic out
-                const AddSound = () => {
-                    const audio = new Audio('https://www.pacdv.com/sounds/preview/sound21.mp3');
-                    audio.loop = false;
-                    audio.play();
-                    console.log('sound') 
-                };
-                AddSound();
+               
 
                   // extract payload data
                 const { id, listID } = action.payload;
@@ -136,6 +133,7 @@ const listsReducer = (state=initialState, action) => {
                 });
               }
           
+
 
 
 
@@ -184,6 +182,30 @@ const listsReducer = (state=initialState, action) => {
 
 
 
+          case CONSTANTS.EDIT_LIST_TITLE: {
+            const { listID, newListTitle } = action.payload;
+            // return new state (array)
+            return state.map(list => {
+                // find list by id
+              if (list.id === listID) {
+                // rewrite title in matched lists
+                list.title = newListTitle;
+                return list;
+              } else {
+                return list;
+              }
+            });
+          }
+      
+
+
+
+          case CONSTANTS.DELETE_LIST: {
+            const { listID } = action.payload;
+            // filter out lists that pass condition
+            return state.filter(list => list.id !== listID);
+          }
+      
        
 
         default: return state;

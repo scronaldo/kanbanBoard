@@ -6,7 +6,7 @@ import Icon from "@material-ui/core/Icon";
 import styled from "styled-components";
 import {Draggable} from 'react-beautiful-dnd';
 import { connect } from "react-redux";
-import { deleteCard, editCard } from "../actions";
+import { deleteCardThunk, editCardThunk } from "../actions";
 import KanbanButton from "./KanbanButton";
 import KanbanForm from "./KanbanForm";
 
@@ -68,7 +68,7 @@ const KanbanCard = React.memo(({text, listID, id, index, dispatch}) => {
 
   const handleDeleteCard = e => {
     // delete card using AC func
-    dispatch(deleteCard(id, listID));
+    dispatch(deleteCardThunk(id, listID));
   }
 
   const closeForm = e => {
@@ -84,7 +84,7 @@ const KanbanCard = React.memo(({text, listID, id, index, dispatch}) => {
   const saveCard = e => {
     e.preventDefault();
     // save edited text and close the form
-    dispatch(editCard(id, listID, cardText));
+    dispatch(editCardThunk(id, listID, cardText));
     setIsEditing(false);
   }; 
 

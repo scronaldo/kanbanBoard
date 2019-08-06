@@ -2,11 +2,11 @@
 import React, { Component} from 'react';
 import Icon from '@material-ui/core/icon';
 import Textarea from "react-textarea-autosize";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux';
-import { addList, addCard } from '../actions';
+import { addList, addCardThunk } from '../actions';
 
 
 // styled component for Button
@@ -47,9 +47,24 @@ const ButtonContainer = styled.div`
   margin-left: 8px;
 `;
 
+
+const pulse = keyframes`
+from {
+  transform:rotate(0deg);
+}
+to {
+  transform:rotate(360deg);
+}`;
+
 const StyledIcon = styled(Icon)`
   margin-left: 8px;
   cursor: pointer;
+  &:hover {
+    animation-name: ${pulse};
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+  }
 `;
 
 
@@ -106,7 +121,7 @@ class KanbanActionButton extends Component {
             this.setState({
                 text: ''
             });
-            dispatch(addCard(listID, text))
+            dispatch(addCardThunk(listID, text))
         }
 
         return;
@@ -186,7 +201,7 @@ class KanbanActionButton extends Component {
                </StyledButton>
               <ButtonContainer>
                 
-                <StyledIcon>close</StyledIcon>
+                <StyledIcon onClick={this.closeForm}>close</StyledIcon>
               </ButtonContainer>
             </Container>
           )
