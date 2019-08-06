@@ -14,7 +14,7 @@ background-color: grey;
 background: linear-gradient(45deg, rgba(145,232,79,1) 0%, rgba(0,128,128,1) 100%);
 border-radius: 3px;
 width: 300px;
-padding: 4px 8px;
+padding: 20px 8px 20px 8px;
 height: 100%;
 margin: 0 10px 0 1px;
 `;
