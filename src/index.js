@@ -10,6 +10,7 @@ const { persistor, store } = Store();
 // console.log(perstistor);
 ReactDOM.render(
 <Provider store={store}>
+  {/* redux-persist wrapper */}
   <PersistGate loading={null} persistor={persistor}>
   <App />
   </PersistGate>
