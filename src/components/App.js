@@ -17,7 +17,6 @@ class App extends Component {
   onDragEnd = (result) => { 
     // destructuring for result obj properties
     const {destination, source, draggableId, type } = result;
-    // console.log(result);
     if(!destination) {
       return;
     }

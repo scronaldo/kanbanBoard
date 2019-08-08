@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { deleteCardThunk, editCardThunk } from "../actions";
 import KanbanButton from "./KanbanButton";
 import KanbanForm from "./KanbanForm";
-
 
 
 
@@ -37,12 +36,32 @@ const EditButton = styled(Icon)`
   }
 `;
 
+
+
 const DeleteButton = styled(Icon)`
+  position: absolute;
+  display: none;
+  right: 32px;
+  bottom: 6px;
+  opacity: 0.5;
+  ${CardContainer}:hover & {
+    display: block;
+    cursor: pointer;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+
+
+const ListenButton = styled(Icon)`
   position: absolute;
   display: none;
   right: 5px;
   bottom: 5px;
   opacity: 0.5;
+  display: block;
   ${CardContainer}:hover & {
     display: block;
     cursor: pointer;
@@ -62,9 +81,46 @@ const KanbanCard = React.memo(({text, listID, id, index, dispatch}) => {
     const [isEditing, setIsEditing] = useState(false);
     // text local state
     const [cardText, setText] = useState(text);
+    
+
+    // didMount in hooks 
+    useEffect(() => {
+      console.log('card created');
+    }, []);
 
 
+  
 
+  // nested functions
+  const listenCard = (e) => {
+
+      // console.log(e);
+
+      // stop previous speech
+      speechSynthesis.cancel();
+
+
+        // shorthandfunc
+    const qs = selectorText => document.querySelector(selectorText);
+    
+
+
+    function talk(){
+      console.log('run talk func');
+      let u = new SpeechSynthesisUtterance();
+      
+      // console.log(document.querySelector('.MuiTypography-body1'))
+      u.text =  qs(`#${id}`).textContent
+
+      console.log('trying to talk');
+      
+      speechSynthesis.speak(u);
+    }
+    
+        talk();
+  };
+
+  
 
   const handleDeleteCard = e => {
     // delete card using AC func
@@ -117,12 +173,20 @@ const KanbanCard = React.memo(({text, listID, id, index, dispatch}) => {
               >
                 edit
               </EditButton>
-              <DeleteButton fontSize="small" onMouseDown={handleDeleteCard}>
+              <ListenButton 
+              className='listenCard' 
+              onMouseDown={listenCard}
+              >
+                play_circle_filled
+                </ListenButton>
+              <DeleteButton 
+              fontSize="small" 
+              onMouseDown={handleDeleteCard}>
                 delete
               </DeleteButton>
 
               <CardContent>
-                <Typography>{text}</Typography>
+                <Typography id={id}>{text}</Typography>
               </CardContent>
             </Card>
           </CardContainer>

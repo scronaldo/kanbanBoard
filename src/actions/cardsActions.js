@@ -51,9 +51,7 @@ export const editCard = (id, listID, newText) => {
   // ok, i know, it might be redundant but i just want to practice thunk here
   export const addCardThunk = (listID, text) => {
       return (dispatch, getState) => {
-        dispatch(addCard(listID, text));
-        console.log('card added!');
-    
+        dispatch(addCard(listID, text));    
         PlaySound('https://freesound.org/data/previews/263/263132_2064400-lq.mp3'); 
 
       }
