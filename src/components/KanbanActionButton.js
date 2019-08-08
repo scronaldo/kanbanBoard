@@ -1,6 +1,5 @@
 // The ADD button 
 import React, { Component} from 'react';
-import Icon from '@material-ui/core/icon';
 import Textarea from "react-textarea-autosize";
 import styled, {keyframes} from "styled-components";
 import Card from "@material-ui/core/Card";
@@ -55,17 +54,6 @@ from {
 to {
   transform:rotate(360deg);
 }`;
-
-const StyledIcon = styled(Icon)`
-  margin-left: 8px;
-  cursor: pointer;
-  &:hover {
-    animation-name: ${pulse};
-    animation-duration: 5000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear; 
-  }
-`;
 
 
 
@@ -159,7 +147,7 @@ class KanbanActionButton extends Component {
 
         return (
                 <OpenFormButton onClick={this.openForm}>
-                    <Icon>add</Icon>
+                   
                     <p>{buttonText}</p>
                 </OpenFormButton>
 
