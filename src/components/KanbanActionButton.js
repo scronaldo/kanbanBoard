@@ -5,6 +5,8 @@ import styled, {keyframes} from "styled-components";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux';
+import Icon from '@material-ui/core/icon';
+
 import { addList, addCardThunk } from '../actions';
 
 
@@ -47,13 +49,12 @@ const ButtonContainer = styled.div`
 `;
 
 
-const pulse = keyframes`
-from {
-  transform:rotate(0deg);
-}
-to {
-  transform:rotate(360deg);
-}`;
+
+
+const StyledIcon = styled(Icon)`
+  margin-left: 8px;
+  cursor: pointer;
+`;
 
 
 
@@ -147,7 +148,7 @@ class KanbanActionButton extends Component {
 
         return (
                 <OpenFormButton onClick={this.openForm}>
-                   
+                    <Icon>add</Icon>
                     <p>{buttonText}</p>
                 </OpenFormButton>
 
@@ -189,7 +190,7 @@ class KanbanActionButton extends Component {
                </StyledButton>
               <ButtonContainer>
                 
-                
+                <StyledIcon onClick={this.closeForm}>close</StyledIcon>
               </ButtonContainer>
             </Container>
           )
