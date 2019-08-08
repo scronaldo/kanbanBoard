@@ -189,7 +189,7 @@ class KanbanActionButton extends Component {
                </StyledButton>
               <ButtonContainer>
                 
-                <StyledIcon onClick={this.closeForm}>close</StyledIcon>
+                
               </ButtonContainer>
             </Container>
           )
