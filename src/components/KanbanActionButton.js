@@ -1,6 +1,6 @@
 // The ADD button 
 import React, { Component} from 'react';
-import Icon from '@material-ui/core/icon';
+import Icon from '@material-ui/core/Icon';
 import Textarea from "react-textarea-autosize";
 import styled, {keyframes} from "styled-components";
 import Card from "@material-ui/core/Card";
