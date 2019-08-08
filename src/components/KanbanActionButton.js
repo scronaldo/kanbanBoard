@@ -5,7 +5,7 @@ import styled, {keyframes} from "styled-components";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { connect } from 'react-redux';
-import Icon from '@material-ui/core/icon';
+import Icon from '@material-ui/core/Icon';
 
 import { addList, addCardThunk } from '../actions';
 
