@@ -20,7 +20,7 @@ class App extends Component {
     if(!destination) {
       return;
     }
-    // sort items
+    // else sort items with ac func
     this.props.dispatch(
       sort(
         source.droppableId,
