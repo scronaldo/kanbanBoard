@@ -39,12 +39,15 @@ class App extends Component {
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <h3 style={{color: 'white', padding: '0 1%',
-    textTransform: 'uppercase'}}>KANBAN: add, edit, delete, listen (eng only) and drag&drop your cards.</h3>
+      <h3 style={{color: 'white', padding: '0 1%', textTransform: 'uppercase'}}>
+      KANBAN: add, edit, delete, listen (eng only) and drag&drop your cards.
+      </h3>
         <Droppable 
         droppableId='all-lists' 
         direction='horizontal' 
-        type='list'>
+        type='list'
+        >
+          {/* dnd standart func */}
           {provided => (
              <ListsContainer 
              {...provided.droppableProps} 
