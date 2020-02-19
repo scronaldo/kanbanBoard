@@ -1,6 +1,6 @@
 Kanban Board
 
-live: https://kanban-board-reactjs.herokuapp.com/ http://pavelos.gq/kanban/
+live: https://kanban-board-reactjs.herokuapp.com/ || http://pavelos.gq/kanban/
 
 
 ReactJS + Redux (Thunk) + React-beautiful-dnd
